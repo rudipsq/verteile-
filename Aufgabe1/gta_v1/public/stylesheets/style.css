@@ -20,16 +20,14 @@ html {
   box-sizing: inherit;
 }
 
-
 /* Variables (example: see declaration for "a" below) */
 
 :root {
-  --link-color: #00B7FF;
+  --link-color: #00b7ff;
   --background-color: #efefef;
   --border-color: #cdcdcd;
   --gray-color: #666;
 }
-
 
 /* HTML element styles */
 
@@ -47,7 +45,6 @@ a {
 /* ### TODO ### Styles for other HTML elements */
 
 /* ... your code here ... */
-
 
 /* Grid styles (no changes required) */
 
@@ -106,31 +103,25 @@ a {
   width: calc(100% - 1rem);
 }
 
-
 /* ### TODO ### Styles for Header Component */
 
 /* ... your code here ... */
-
 
 /* ### TODO ### Styles for Main Component */
 
 /* ... your code here ... */
 
-
 /* ### TODO ### Styles for Tagging component */
 
 /* ... your code here ... */
-
 
 /* ### TODO ### Styles for Discovery component */
 
 /* ... your code here ... */
 
-
 /* ### TODO ### Styles for Footer Component */
 
 /* ... your code here ... */
-
 
 /* ### TODO ### Media Queries */
 

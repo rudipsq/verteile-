@@ -86,7 +86,7 @@ Für die Formulare soll nun noch eine Validierung definiert werden. Diese Validi
 
 Setzen sie folgende Regeln um:
 
-- Latitude und Longitude erhalten feste Werte und können nicht verändert werden.
+- TODO?: Latitude und Longitude erhalten feste Werte und können nicht verändert werden.
 - Im Tagging-Formular muss ein Name angegeben werden, der Hashtag ist optional.
 - Namen dürfen 10 Buchstaben lang sein.
 - Hashtags müssen mit `#` beginnen und dürfen dann noch 10 Buchstaben haben.
@@ -164,19 +164,19 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 
 ### Teil A: Formulare fertigstellen
 
-- [ ] `Input` Elemente im Tagging- und Discovery-Formular ergänzen
-  - [ ] Felder im Tagging Formular: `latitude`, `longitude`, `name` und `hashtag`
-  - [ ] Felder im Discovery Formular: `searchterm` sowie `latitude` und `longitude` als versteckte Eingaben
-  - [ ] Eindeutige `id` Attribute für die Felder
-  - [ ] Für alle Felder jeweils ein `label`
-  - [ ] Platzhalter für alle Felder
-- [ ] `fieldset` und `legend` zur Begrenzung des Formulars
-- [ ] Für jedes Formular ein Element zum Absenden
-- [ ] Formular-Validierung
-  - [ ] Latitude und Longitude mit festen Werten
-  - [ ] Im Tagging-Formular: Name obligatorisch, Hashtag optional
-  - [ ] Namen: max. 10 Buchstaben lang
-  - [ ] Hashtags: beginnen mit `#`, max. 10 Buchstaben
+- [x] `Input` Elemente im Tagging- und Discovery-Formular ergänzen
+  - [x] Felder im Tagging Formular: `latitude`, `longitude`, `name` und `hashtag`
+  - [x] Felder im Discovery Formular: `searchterm` sowie `latitude` und `longitude` als versteckte Eingaben
+  - [x] Eindeutige `id` Attribute für die Felder
+  - [x] Für alle Felder jeweils ein `label`
+  - [x] Platzhalter für alle Felder
+- [x] `fieldset` und `legend` zur Begrenzung des Formulars
+- [x] Für jedes Formular ein Element zum Absenden
+- [x] Formular-Validierung
+  - [?] Latitude und Longitude mit festen Werten
+  - [x] Im Tagging-Formular: Name obligatorisch, Hashtag optional
+  - [x] Namen: max. 10 Buchstaben lang
+  - [x] Hashtags: beginnen mit `#`, max. 10 Buchstaben
 
 ### Teil B: Seite mit CSS3 gestalten
 
