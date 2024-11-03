@@ -34,6 +34,7 @@ html {
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   min-height: 100vh;
 }
@@ -104,25 +105,134 @@ a {
 }
 
 /* ### TODO ### Styles for Header Component */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e7e2e1;
 
-/* ... your code here ... */
+  padding: 30px;
+}
+
+header img {
+  height: 50px;
+}
 
 /* ### TODO ### Styles for Main Component */
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+}
 
-/* ... your code here ... */
+.main * {
+  border-radius: 5px;
+}
 
 /* ### TODO ### Styles for Tagging component */
+.main__tagging {
+  width: calc(33.33% - 1rem);
+}
 
-/* ... your code here ... */
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+
+  padding: 5px;
+
+  border: #cdcdcd solid 1px;
+}
+
+#tag-form-latitude,
+#tag-form-longitude {
+  background-color: #e3e3e3;
+  color: #ca8d8d;
+}
 
 /* ### TODO ### Styles for Discovery component */
+.main__discovery {
+  width: calc(66.66% - 1rem);
+}
 
-/* ... your code here ... */
+.discovery__wrapper {
+  margin-top: 20px;
+  display: flex;
+
+  gap: 20px;
+
+  width: 100%;
+}
+
+.discovery__taglist {
+  width: calc(33.33% - 1rem);
+}
+
+.discovery__map {
+  width: calc(66.66% - 1rem);
+}
+
+#discoveryResults {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 10px;
+  color: #00b7ff;
+  background-color: #ddd;
+
+  /*-webkit-text-stroke: 1px black;
+  */
+  border: 1px #585858 solid;
+  padding: 10px;
+}
+
+#mapView {
+  width: 100%;
+  aspect-ratio: 1.15;
+}
 
 /* ### TODO ### Styles for Footer Component */
+.footer {
+  background-color: #e7e2e1;
+  display: flex;
+  align-items: center;
 
-/* ... your code here ... */
+  text-align: start;
+
+  /* flex-grow: 1; */
+
+  padding: 30px;
+}
 
 /* ### TODO ### Media Queries */
 
-/* ... your code here ... */
+@media screen and (max-aspect-ratio: 9/16) {
+  .main {
+    flex-direction: column;
+  }
+
+  .main__tagging,
+  .main__discovery {
+    /* width: calc(100% - 1rem); */
+    width: 100%;
+  }
+
+  .discovery__wrapper {
+    flex-direction: column;
+  }
+
+  .discovery__taglist,
+  .discovery__map {
+    /* width: calc(100% - 1rem); */
+    width: 100%;
+  }
+}
