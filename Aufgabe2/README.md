@@ -4,7 +4,7 @@ In der zweiten Aufgabe soll die Position (d.h. die Koordinaten) des Geräts, auf
 
 Die Aufgabe vertieft die Programmierung von **Klassen** und **Callbacks** sowie **DOM Manipulation** mit JavaScript. Zudem wird die Nutzung einer externen **Web API** demonstriert.
 
-## 2.1. Vorbereitung
+## 2.1. Vorbereitung 
 
 Aktualisieren sie zunächst das Github Repository [https://github.com/zirpins/vs1lab](https://github.com/zirpins/vs1lab). Wenn Sie den git-Tipps aus Aufgabe 1 gefolgt sind, gehen sie wie folgt vor (Beispiel für Linux/Mac):
 
@@ -100,16 +100,16 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 
 ### 1. Teilaufgabe: Koordinaten bestimmen
 
-- [ ] Funktion `updateLocation` erstellen
-  - [ ] Nach dem Laden automatisch aufrufen
-  - [ ] Auslesen der Position mit `findLocation`
-  - [ ] Koordinaten in die Formulare eintragen
-    - [ ] `latitude` und `longitude` Felder
-    - [ ] Koordinaten in `value`-Attribute schreiben
-    - [ ] Auch versteckte Eingabefelder berücksichtigen
+- [x] Funktion `updateLocation` erstellen
+  - [x] Nach dem Laden automatisch aufrufen
+  - [x] Auslesen der Position mit `findLocation`
+  - [x] Koordinaten in die Formulare eintragen
+    - [x] `latitude` und `longitude` Felder
+    - [x] Koordinaten in `value`-Attribute schreiben
+    - [x] Auch versteckte Eingabefelder berücksichtigen
 
 ### 2. Teilaufgabe: Karte darstellen
 
-- [ ] `updateLocation`-Funktion ergänzen
-  - [ ] Funktionen `initMap` und `updateMarkers` aufrufen
-  - [ ] `img` und `p`-Elemente mit DOM-Funktionen entfernen
+- [x] `updateLocation`-Funktion ergänzen
+  - [x] Funktionen `initMap` und `updateMarkers` aufrufen
+  - [x] `img` und `p`-Elemente mit DOM-Funktionen entfernen
