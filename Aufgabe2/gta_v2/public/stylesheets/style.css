@@ -195,13 +195,9 @@ li {
   padding: 10px;
 }
 
-#mapView {
-  width: 100%;
-  aspect-ratio: 1.15;
-}
-
 #map {
   height: 500px;
+  width: 100%;
 }
 
 /* ### TODO ### Styles for Footer Component */

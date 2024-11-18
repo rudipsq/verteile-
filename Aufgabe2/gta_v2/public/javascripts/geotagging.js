@@ -139,6 +139,12 @@ function updateLocation() {
     document.getElementById("discovery-form-longitude").value = longitude;
 
     // - - - Teil 2
+    const elements = document.getElementsByClassName("jsDelete");
+
+    for (const element of elements) {
+      element.remove();
+    }
+
     let mapManager = new MapManager();
 
     mapManager.initMap(latitude, longitude);

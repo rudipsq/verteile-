@@ -20,7 +20,7 @@ Nach der Aktualisierung kann die zweite Aufgabe vorbereitet werden.
 
 ### 2.1.1 Vorherige Lösungen übernehmen und IDE vorbereiten
 
-Da die Aufgaben aufeinander aufbauen, aber die Lösungen nicht vermischt werden sollen, muss die Lösung der ersten Aufgabe als Ausgangspunkt für die zweite Aufgabe übernommen werden:
+Da die Aufgaben aufeinander aufbauen, aber die Lösungen nicht vermischt werden sollen, muss die Lösung der ersten Aufgabe als Ausgangspunkt für die zweite Aufgabe übernommen werden: 
 
 - Kopieren Sie die CSS-Datei `Aufgabe1/gta_v1/public/stylesheets/style.css` aus Aufgabe 1 nach `Aufgabe2/gta_v2/public/stylesheets/style.css`
 - Kopieren Sie die HTML-Datei `Aufgabe1/gta_v1/public/index.html` aus Aufgabe 1 nach `Aufgabe2/gta_v2/public/index.html` und öffnen Sie diese dann im **Editor**.
