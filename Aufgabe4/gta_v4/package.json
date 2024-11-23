@@ -9,6 +9,7 @@
     "debug": "*",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "geotag-app": "file:",
     "http-errors": "~1.6.3",
     "morgan": "*"
   },

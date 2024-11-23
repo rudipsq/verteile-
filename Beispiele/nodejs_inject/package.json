@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "^4.17.1",
+    "nodejs_inject": "file:",
     "validator": "^13.7.0"
   }
 }

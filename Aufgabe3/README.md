@@ -15,7 +15,7 @@ git pull # lade Aktualisierungen herunter
 git checkout dev # wechsle wieder in den eigenen Branch
 git merge master # übernehme mögliche Änderungen aus dem Hauptzweig (Daumen drücken, dass es keine Konflikte gibt, sonst manuell mit eigenen Änderungen zusammenführen)
 ```
-
+ 
 Nach der Aktualisierung kann die zweite Aufgabe vorbereitet werden.
 
 ### 3.1.1 Vorherige Lösungen übernehmen
