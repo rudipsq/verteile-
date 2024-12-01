@@ -23,15 +23,22 @@
  * - The proximity constrained is the same as for 'getNearbyGeoTags'.
  * - Keyword matching should include partial matches from name or hashtag fields.
  */
+
+// const GeoTagExamples = require("./geotag-examples");
+
 class InMemoryGeoTagStore {
   #geoTags = [];
+
+  get tagList() {
+    return this.#geoTags;
+  }
 
   addGeoTag(geoTag) {
     this.#geoTags.push(geoTag);
   }
 
   removeGeoTag(name) {
-    this.#geoTags = this.#geoTags.filter((tag) => tag.name !== name);
+    this.#geoTags = this.#geoTags.filter((tag) => tag[0] !== name);
   }
 
   getNearbyGeoTags(location, radius) {
@@ -49,16 +56,16 @@ class InMemoryGeoTagStore {
   }
 
   #isInRadius(tag, location, radius) {
-    const dx = tag.latitude - location.latitude;
-    const dy = tag.longitude - location.longitude;
+    const dx = tag[1] - location.latitude;
+    const dy = tag[2] - location.longitude;
     return Math.sqrt(dx * dx + dy * dy) <= radius;
   }
 
   #matchesKeyword(tag, keyword) {
     const lowercaseKeyword = keyword.toLowerCase();
     return (
-      tag.name.toLowerCase().includes(lowercaseKeyword) ||
-      tag.hashtag.toLowerCase().includes(lowercaseKeyword)
+      tag[0].toLowerCase().includes(lowercaseKeyword) ||
+      tag[3].toLowerCase().includes(lowercaseKeyword)
     );
   }
 }

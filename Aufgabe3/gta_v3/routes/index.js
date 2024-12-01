@@ -32,6 +32,13 @@ const GeoTag = require("../models/geotag");
 const GeoTagStore = require("../models/geotag-store");
 const geoTagStore = new GeoTagStore();
 
+const GeoTagExamples = require("../models/geotag-examples");
+const geoTagExamples = new GeoTagExamples(geoTagStore);
+
+// console.log(geoTagStore.tagList);
+// geoTagStore.removeGeoTag("Building E");
+// console.log(geoTagStore.tagList);
+
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
