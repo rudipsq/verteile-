@@ -194,6 +194,19 @@ function updateLocation() {
 
     let mapManager = new MapManager();
     mapManager.initMap(latitude, longitude);
+
+    const map = document.getElementById("map");
+    const taglistString = map.getAttribute("data-tags");
+    console.log(taglistString);
+
+    const tagList = JSON.parse(taglistString);
+    console.log(tagList);
+
+    for (const tag of tagList) {
+      tag.location = { latitude: tag.latitude, longitude: tag.longitude };
+    }
+
+    mapManager.updateMarkers(latitude, longitude, tagList);
   }
 }
 

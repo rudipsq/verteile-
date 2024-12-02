@@ -35,19 +35,24 @@ class InMemoryGeoTagStore {
 
   addGeoTag(geoTag) {
     this.#geoTags.push(geoTag);
+
+    // test
+    console.log(this.#geoTags);
   }
 
   removeGeoTag(name) {
-    this.#geoTags = this.#geoTags.filter((tag) => tag[0] !== name);
+    this.#geoTags = this.#geoTags.filter((tag) => tag.name !== name);
   }
 
   getNearbyGeoTags(location, radius) {
+    console.log("get geo tag", location, radius);
     return this.#geoTags.filter((tag) =>
       this.#isInRadius(tag, location, radius)
     );
   }
 
   searchNearbyGeoTags(location, radius, keyword) {
+    console.log("search geo tag", location, radius);
     return this.#geoTags.filter(
       (tag) =>
         this.#isInRadius(tag, location, radius) &&
@@ -56,16 +61,16 @@ class InMemoryGeoTagStore {
   }
 
   #isInRadius(tag, location, radius) {
-    const dx = tag[1] - location.latitude;
-    const dy = tag[2] - location.longitude;
+    const dx = tag.latitude - location.latitude;
+    const dy = tag.longitude - location.longitude;
     return Math.sqrt(dx * dx + dy * dy) <= radius;
   }
 
   #matchesKeyword(tag, keyword) {
     const lowercaseKeyword = keyword.toLowerCase();
     return (
-      tag[0].toLowerCase().includes(lowercaseKeyword) ||
-      tag[3].toLowerCase().includes(lowercaseKeyword)
+      tag.name.toLowerCase().includes(lowercaseKeyword) ||
+      tag.hashtag.toLowerCase().includes(lowercaseKeyword)
     );
   }
 }

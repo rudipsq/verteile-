@@ -133,7 +133,6 @@
             <label>
               <input
                 id="discovery-form-latitude"
-                type="number"
                 name="latitude"
                 value="<%= latitude %>"
                 placeholder="Enter a latitude"
@@ -144,7 +143,6 @@
             <label>
               <input
                 id="discovery-form-longitude"
-                type="number"
                 name="longitude"
                 value="<%= longitude %>"
                 placeholder="Enter a longitude"
@@ -171,7 +169,7 @@
             </ul>
           </div>
 
-          <div class="discovery__map" id="map">
+          <div class="discovery__map" id="map" data-tags="<%= markers %>">
             <img
               src="./images/mapview.jpg"
               alt="a map with locations"
