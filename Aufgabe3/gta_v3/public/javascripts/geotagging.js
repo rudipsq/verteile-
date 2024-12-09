@@ -192,6 +192,11 @@ function updateLocation() {
     console.log(latitude);
     console.log(longitude);
 
+    const elements = document.getElementsByClassName("jsDelete");
+    for (const element of elements) {
+      element.remove();
+    }
+
     let mapManager = new MapManager();
     mapManager.initMap(latitude, longitude);
 

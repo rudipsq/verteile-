@@ -119,7 +119,7 @@ router.post("/discovery", (req, res) => {
 
   const search = searchterm;
 
-  const radius = 0.002; // todo: kann angepasst werden
+  const radius = 0.05; // todo: kann angepasst werden
 
   console.log(search);
 

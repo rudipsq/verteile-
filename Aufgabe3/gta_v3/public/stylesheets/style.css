@@ -170,7 +170,7 @@ input {
   gap: 20px;
 
   width: 100%;
-  height: 300px;
+  min-height: 500px;
 }
 
 .discovery__taglist {
@@ -180,6 +180,7 @@ input {
 .discovery__map {
   width: calc(66.66% - 1rem);
   height: 100%;
+  min-height: 500px;
 }
 
 #discoveryResults {
