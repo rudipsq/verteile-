@@ -5,7 +5,7 @@ Die vierte Aufgabe hat folgende Ziele:
 1. Aufrufe aus dem Browser sollen mittels **AJAX** erfolgen (statt Formularen).
 2. Auf der Serverseite soll dazu eine **REST-API** realisiert werden.
 3. Optional soll die GeoTag Suche durch **Pagination** der Ergebnisliste erweitert werden.
-
+ 
 Grundsätzlich soll die Funktionalität der Anwendung identisch erhalten bleiben, nur dass die Interaktion mit dem Server per AJAX wesentlich schneller und ohne störenden Aufbau einer neuen Seite abläuft. Die Seitennummerierung der GeoTag Liste ermöglicht den Umgang mit umfangreichen Ergebnismengen.
 
 Die Aufgabe vertieft die asynchrone Programmierung mit **Event-Listener** und **Promises** sowie die Verwendung der **Fetch API** in Javascript. Zudem wird die **Struktur von REST APIs** sowie deren Umsetzung mit dem **HTTP-Protokoll** über **Express Routen** in Javascript eingeübt.
@@ -117,13 +117,13 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 ### 1. Teilaufgabe: Server-Erweiterung
 
 - [ ] Neue **Routen** realisieren (`./routers/index.js`)
-  - [ ] GET `/api/geotags`
-  - [ ] POST `/api/geotags`
+  - [x] GET `/api/geotags`
+  - [x] POST `/api/geotags`
   - [ ] GET `/api/geotags/:id`
   - [ ] PUT `/api/geotags/:id`
   - [ ] DELETE `/api/geotags/:id`
 - [ ] **Servermodule erweitern**
-  - [ ] Klasse `InMemoryGeoTagStore` mit Primärschlüsseln für GeoTags
+  - [x] Klasse `InMemoryGeoTagStore` mit Primärschlüsseln für GeoTags
 - [ ] Backend **Demonstrator** mit **generischem HTTP-Client**
   - [ ]  **Lebenszyklus** für GeoTag vorführen: Erstellen, Auslesen, Ändern, Suchen, Löschen
 

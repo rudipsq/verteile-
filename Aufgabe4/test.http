@@ -1,0 +1,18 @@
+@hostname = http://localhost:3000
+
+
+
+
+###get item
+GET {{hostname}}/api/geotags?latitude=49.014993&longitude=8.390049&searchterm=campus
+
+###post item
+POST {{hostname}}/api/geotags
+Content-Type: application/json
+
+{
+    "name": "TEST",
+    "latitude": 48.87036,
+    "longitude": 8.39479,
+    "hashtag": "#test"
+}
