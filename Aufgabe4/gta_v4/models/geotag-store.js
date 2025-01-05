@@ -43,8 +43,24 @@ class InMemoryGeoTagStore {
     console.log(this.#geoTags);
   }
 
+  addGeoTagWithId(geoTag, id) {
+    geoTag.id = id;
+    this.#geoTags.push(geoTag);
+
+    // test
+    console.log(this.#geoTags);
+  }
+
   removeGeoTag(name) {
     this.#geoTags = this.#geoTags.filter((tag) => tag.name !== name);
+  }
+
+  removeGeoTagWithId(id) {
+    this.#geoTags = this.#geoTags.filter((tag) => tag.id !== id);
+  }
+
+  getGeotagById(id) {
+    return this.#geoTags.filter((tag) => tag.id == id)[0];
   }
 
   getNearbyGeoTags(location, radius) {

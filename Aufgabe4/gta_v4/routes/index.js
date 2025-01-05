@@ -181,7 +181,19 @@ router.post("/api/geotags", (req, res) => {
 
 // TODO: ... your code here ...
 
-//router.get("/api/geotags/:id", (req, res) => {});
+router.get("/api/geotags/:id", (req, res) => {
+  const id = Number(req.params.id);
+  let result = geoTagStore.getGeotagById(id);
+
+  // test
+  console.log(id, result);
+
+  if (result) {
+    res.status(200).json(result);
+  } else {
+    res.status(404).json({ message: `Geotag with id ${id} not found` });
+  }
+});
 
 /**
  * Route '/api/geotags/:id' for HTTP 'PUT' requests.
@@ -199,6 +211,21 @@ router.post("/api/geotags", (req, res) => {
 
 // TODO: ... your code here ...
 
+router.put("/api/geotags/:id", (req, res) => {
+  const id = Number(Number(req.params.id));
+  const { name, latitude, longitude, hashtag } = req.body;
+
+  const newGeoTag = new GeoTag(name, latitude, longitude, hashtag);
+
+  if (geoTagStore.getGeotagById(id)) {
+    geoTagStore.removeGeoTagWithId(id);
+  }
+  geoTagStore.addGeoTagWithId(newGeoTag, id);
+
+  res.location(`/api/geotags/${newGeoTag.id}`);
+  res.status(201).json(newGeoTag);
+});
+
 /**
  * Route '/api/geotags/:id' for HTTP 'DELETE' requests.
  * (http://expressjs.com/de/4x/api.html#app.delete.method)
@@ -211,5 +238,13 @@ router.post("/api/geotags", (req, res) => {
  */
 
 // TODO: ... your code here ...
+
+router.delete("/api/geotags/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  geoTagStore.removeGeoTagWithId(id);
+
+  res.status(200);
+});
 
 module.exports = router;
