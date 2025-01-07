@@ -1,11 +1,11 @@
 @hostname = http://localhost:3000
-@id = 1736095394978
+@id = 1736272953330
 
 
 
 
 ###get item
-GET {{hostname}}/api/geotags?latitude=49.014993&longitude=8.390049&searchterm=campus
+GET {{hostname}}/api/geotags?latitude=49.014993&longitude=8.390049&searchterm=123
 
 ###post item
 POST {{hostname}}/api/geotags
@@ -32,7 +32,7 @@ Content-Type: application/json
     "name": "TEST",
     "latitude": 48.87036,
     "longitude": 8.39479,
-    "hashtag": "#test"
+    "hashtag": "#123"
 }
 
 

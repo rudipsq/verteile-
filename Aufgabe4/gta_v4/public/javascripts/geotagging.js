@@ -178,7 +178,7 @@ function updateLocation() {
         element.remove();
       }
 
-      let mapManager = new MapManager();
+      // let mapManager = new MapManager();
       mapManager.initMap(latitude, longitude);
       mapManager.updateMarkers(latitude, longitude);
     });
@@ -197,7 +197,7 @@ function updateLocation() {
       element.remove();
     }
 
-    let mapManager = new MapManager();
+    // let mapManager = new MapManager();
     mapManager.initMap(latitude, longitude);
 
     const map = document.getElementById("map");
@@ -215,8 +215,83 @@ function updateLocation() {
   }
 }
 
+let mapManager;
+
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
   //   alert("Please change the script 'geotagging.js'");
+  mapManager = new MapManager();
   updateLocation();
+
+  const tagFormSubmitForm = document.getElementById("tag-form");
+  tagFormSubmitForm.addEventListener("submit", tagFormSubmit);
+
+  const discoveryFormSubmitButton = document.getElementById(
+    "discoveryFilterForm"
+  );
+  discoveryFormSubmitButton.addEventListener("submit", discoveryFormSubmit);
 });
+
+function tagFormSubmit(event) {
+  event.preventDefault();
+
+  const latitude = document.getElementById("tag-form-latitude").value;
+  const longitude = document.getElementById("tag-form-longitude").value;
+  const name = document.getElementById("tag-form-name").value;
+  const hashtag = document.getElementById("tag-form-hashtag").value;
+
+  console.log(latitude, longitude, name, hashtag);
+
+  let requestJson = {
+    name: name,
+    latitude: latitude,
+    longitude: longitude,
+    hashtag: hashtag,
+  };
+
+  fetch("/api/geotags", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(requestJson),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log("Erfolg:", data))
+    .catch((error) => console.error("Fehler:", error));
+}
+
+function discoveryFormSubmit(event) {
+  event.preventDefault();
+
+  const latitude = document.getElementById("discovery-form-latitude").value;
+  const longitude = document.getElementById("discovery-form-longitude").value;
+  const searchTerm = document.getElementById("discovery-form-search").value;
+
+  fetch(
+    `/api/geotags?latitude=${latitude}&longitude=${longitude}&searchterm=${searchTerm}`,
+    {
+      method: "GET",
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Erfolg:", data);
+
+      console.log(data);
+      const tagList = data;
+
+      const resultsListElement = document.getElementById("discoveryResults");
+      resultsListElement.innerHTML = "";
+
+      for (const tag of tagList) {
+        tag.location = { latitude: tag.latitude, longitude: tag.longitude };
+
+        const childElement = document.createElement("li");
+        childElement.innerHTML = `${tag.name} (${tag.latitude}, ${tag.longitude}) ${tag.hashtag}`;
+
+        resultsListElement.appendChild(childElement);
+      }
+
+      mapManager.updateMarkers(latitude, longitude, tagList);
+    })
+    .catch((error) => console.error("Fehler:", error));
+}
