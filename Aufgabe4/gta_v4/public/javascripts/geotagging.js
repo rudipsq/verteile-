@@ -216,6 +216,13 @@ function updateLocation() {
 }
 
 let mapManager;
+let prevPageButton;
+let nextPageButton;
+let currentPage = 1;
+
+let latitude;
+let longitude;
+let searchTerm;
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
@@ -230,6 +237,29 @@ document.addEventListener("DOMContentLoaded", () => {
     "discoveryFilterForm"
   );
   discoveryFormSubmitButton.addEventListener("submit", discoveryFormSubmit);
+
+  prevPageButton = document.getElementById("prev");
+  nextPageButton = document.getElementById("next");
+
+  prevPageButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const url = event.target.href;
+
+    currentPage--;
+
+    maxPageNumber = await fetchGeotags(url);
+    updatePageButtons(maxPageNumber);
+  });
+
+  nextPageButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const url = event.target.href;
+
+    currentPage++;
+
+    maxPageNumber = await fetchGeotags(url);
+    updatePageButtons(maxPageNumber);
+  });
 });
 
 function tagFormSubmit(event) {
@@ -259,25 +289,89 @@ function tagFormSubmit(event) {
     .catch((error) => console.error("Fehler:", error));
 }
 
-function discoveryFormSubmit(event) {
+async function discoveryFormSubmit(event) {
   event.preventDefault();
 
-  const latitude = document.getElementById("discovery-form-latitude").value;
-  const longitude = document.getElementById("discovery-form-longitude").value;
-  const searchTerm = document.getElementById("discovery-form-search").value;
+  latitude = document.getElementById("discovery-form-latitude").value;
+  longitude = document.getElementById("discovery-form-longitude").value;
+  searchTerm = document.getElementById("discovery-form-search").value;
 
-  fetch(
-    `/api/geotags?latitude=${latitude}&longitude=${longitude}&searchterm=${searchTerm}`,
-    {
-      method: "GET",
-    }
-  )
+  const maxPageNumber = await fetchGeotags(
+    `/api/geotags?latitude=${latitude}&longitude=${longitude}&searchterm=${searchTerm}&page=1`
+  );
+
+  currentPage = 1;
+
+  updatePageButtons(maxPageNumber);
+
+  // fetch(
+  //   `/api/geotags?latitude=${latitude}&longitude=${longitude}&searchterm=${searchTerm}&page=1`,
+  //   {
+  //     method: "GET",
+  //   }
+  // )
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log("Erfolg:", data);
+
+  //     console.log(data);
+  //     const tagList = data.geotags;
+  //     const maxPages = data.maxPageNumber;
+
+  //     const resultsListElement = document.getElementById("discoveryResults");
+  //     resultsListElement.innerHTML = "";
+
+  //     for (const tag of tagList) {
+  //       tag.location = { latitude: tag.latitude, longitude: tag.longitude };
+
+  //       const childElement = document.createElement("li");
+  //       childElement.innerHTML = `${tag.name} (${tag.latitude}, ${tag.longitude}) ${tag.hashtag}`;
+
+  //       resultsListElement.appendChild(childElement);
+  //     }
+
+  //     mapManager.updateMarkers(latitude, longitude, tagList);
+  //   })
+  //   .catch((error) => console.error("Fehler:", error));
+}
+
+function updatePageButtons(maxPages) {
+  console.log(currentPage, maxPages);
+  document.getElementById("pagination").style.display = "flex";
+
+  prevPageButton.href = `/api/geotags?latitude=${latitude}&longitude=${longitude}&searchterm=${searchTerm}&page=${
+    currentPage - 1
+  }`;
+  nextPageButton.href = `/api/geotags?latitude=${latitude}&longitude=${longitude}&searchterm=${searchTerm}&page=${
+    currentPage + 1
+  }`;
+
+  if (currentPage === 1) {
+    prevPageButton.classList.add("disabled");
+  } else {
+    prevPageButton.classList.remove("disabled");
+  }
+
+  if (currentPage === maxPages) {
+    nextPageButton.classList.add("disabled");
+  } else {
+    nextPageButton.classList.remove("disabled");
+  }
+
+  document.getElementById("currentPage").innerHTML = currentPage;
+}
+
+async function fetchGeotags(url) {
+  return await fetch(url, {
+    method: "GET",
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log("Erfolg:", data);
 
       console.log(data);
-      const tagList = data;
+      const tagList = data.geotags;
+      const maxPages = data.maxPageNumber;
 
       const resultsListElement = document.getElementById("discoveryResults");
       resultsListElement.innerHTML = "";
@@ -292,6 +386,8 @@ function discoveryFormSubmit(event) {
       }
 
       mapManager.updateMarkers(latitude, longitude, tagList);
+
+      return maxPages;
     })
     .catch((error) => console.error("Fehler:", error));
 }

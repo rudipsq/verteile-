@@ -112,12 +112,35 @@ router.post("/discovery", (req, res) => {
 
 // TODO: ... your code here ...
 
+// router.get("/api/geotags", (req, res) => {
+//   const { latitude, longitude, searchterm } = req.query;
+//   let results;
+
+//   const search = searchterm;
+//   const radius = 0.05; // todo: kann angepasst werden
+
+//   console.log(search);
+
+//   if (search) {
+//     results = geoTagStore.searchNearbyGeoTags(
+//       { latitude: latitude, longitude: longitude },
+//       radius,
+//       search
+//     );
+//   } else {
+//     results = geoTagStore.getNearbyGeoTags({ latitude, longitude }, radius);
+//   }
+
+//   res.status(200).json(results);
+// });
+
 router.get("/api/geotags", (req, res) => {
-  const { latitude, longitude, searchterm } = req.query;
+  const { latitude, longitude, searchterm, page } = req.query;
   let results;
 
   const search = searchterm;
-  const radius = 0.05; // todo: kann angepasst werden
+  const radius = 0.05; // kann angepasst werden
+  const maxResultsPerPage = 4; // kann angepasst werden
 
   console.log(search);
 
@@ -131,7 +154,24 @@ router.get("/api/geotags", (req, res) => {
     results = geoTagStore.getNearbyGeoTags({ latitude, longitude }, radius);
   }
 
-  res.status(200).json(results);
+  let finalResults = [];
+
+  for (
+    let index = (page - 1) * maxResultsPerPage;
+    index < (page - 1) * maxResultsPerPage + maxResultsPerPage;
+    index++
+  ) {
+    if (results[index]) {
+      finalResults.push(results[index]);
+    }
+  }
+
+  let jsonResponse = {
+    geotags: finalResults,
+    maxPageNumber: Math.ceil(results.length / maxResultsPerPage),
+  };
+
+  res.status(200).json(jsonResponse);
 });
 
 /**

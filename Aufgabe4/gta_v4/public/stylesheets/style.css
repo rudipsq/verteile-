@@ -177,6 +177,32 @@ input {
   width: calc(33.33% - 1rem);
 }
 
+/* - - - PAGINATION - - - */
+#pagination {
+  display: flex;
+  justify-content: space-between;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#currentPage {
+  padding-top: 2px;
+}
+
+#pagination #prev,
+#pagination #next {
+  padding: 3px;
+
+  border: solid 1px;
+
+  cursor: pointer;
+}
+
+.disabled {
+  visibility: hidden;
+}
+
 .discovery__map {
   width: calc(66.66% - 1rem);
   height: 100%;

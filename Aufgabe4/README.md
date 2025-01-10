@@ -85,7 +85,7 @@ Auf der Clientseite muss noch eine Funktion zur Aktualisierung der Darstellung i
 
 ## 4.3. Zusatzaufgabe
 
-Die Zusatzaufgabe besteht darin, die vorhandene Ergebnisliste für GeoTags im Discovery Widget mit einer Funktion für die Seitennummerierung ([Pagination](https://en.wikipedia.org/wiki/Pagination)) zu ergänzen. Längere Ergebnislisten sollen auf mehrere nummerierte Seiten aufgeteilt werden, zwischen denen über Links gewechselt werden kann.
+Die Zusatzaufgabe besteht darin, die vorhandene Ergebnisliste für GeoTags im Discovery Widget mit einer Funktion für die Seitennummerierung ([Pagination](https://en.wikipedia.org/wiki/Pagination)) zu ergänzen. Längere Ergebnislisten sollen auf mehrere nummerierte Seiten aufgeteilt werden, zwischen denen über !Links! gewechselt werden kann.
 
 Ein Beispiel wie dies aussehen könnte, zeigt die folgende Abbildung:
 
