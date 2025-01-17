@@ -1,11 +1,11 @@
 @hostname = http://localhost:3000
-@id = 1736272953330
+@id = 1736764994205
 
 
 
 
 ###get item
-GET {{hostname}}/api/geotags?latitude=49.014993&longitude=8.390049&searchterm=123
+GET {{hostname}}/api/geotags?latitude=49.014993&longitude=8.390049&page=2
 
 ###post item
 POST {{hostname}}/api/geotags
